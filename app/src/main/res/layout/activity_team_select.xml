@@ -7,4 +7,15 @@
     android:background="@drawable/plain_background"
     tools:context=".TeamSelectActivity">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/team_action_bar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

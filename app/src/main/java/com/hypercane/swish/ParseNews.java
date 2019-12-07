@@ -1,3 +1,5 @@
+package com.hypercane.swish;
+
 import com.hypercane.swish.NewsFeed;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -6,6 +8,8 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.StringReader;
 import java.util.ArrayList;
 
+
+//This class is for parsing the XML fetched from the NBA RSS feed.
 public class ParseNews {
 
     private ArrayList<NewsFeed> newsArticle;

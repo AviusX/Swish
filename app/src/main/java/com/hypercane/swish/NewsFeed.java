@@ -1,5 +1,7 @@
 package com.hypercane.swish;
 
+//This specified the structure of data in the ArrayList where each article is stored.
+
 public class NewsFeed {
 
     private String title;
