@@ -4,29 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/team_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/plain_background">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/teamLogo"
-        android:layout_width="52dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="79dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="@+id/teamName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/teamName"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/teamName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="32sp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/open_sans_light"
+        android:letterSpacing="0.02"
+        android:paddingBottom="8dp"
+        android:textAlignment="textEnd"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/teamLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/teamLogo"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/teamLogo"
         tools:text="Bucks" />
 </androidx.constraintlayout.widget.ConstraintLayout>

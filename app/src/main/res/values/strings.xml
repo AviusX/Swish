@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">Swish</string>
+
+    <string-array name="team_names">
+        <item>Bucks</item>
+        <item>Bulls</item>
+        <item>Cavaliers</item>
+        <item>Celtics</item>
+        <item>Clippers</item>
+        <item>Grizzlies</item>
+        <item>Hawks</item>
+        <item>Heat</item>
+        <item>Hornets</item>
+        <item>Jazz</item>
+        <item>Kings</item>
+        <item>Knicks</item>
+        <item>Lakers</item>
+        <item>Magic</item>
+        <item>Mavericks</item>
+        <item>Nets</item>
+        <item>Nuggets</item>
+        <item>Pacers</item>
+        <item>Pelicans</item>
+        <item>Pistons</item>
+        <item>Raptors</item>
+        <item>Rockets</item>
+        <item>Sixers</item>
+        <item>Spurs</item>
+        <item>Suns</item>
+        <item>Thunder</item>
+        <item>Trail Blazers</item>
+        <item>Timberwolves</item>
+        <item>Warriors</item>
+        <item>Wizards</item>
+    </string-array>
+
 </resources>
