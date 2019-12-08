@@ -2,11 +2,14 @@ package com.hypercane.swish;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 public class TeamSelectActivity extends AppCompatActivity {
@@ -39,5 +42,23 @@ public class TeamSelectActivity extends AppCompatActivity {
         TeamAdapter teamAdapter = new TeamAdapter(TeamSelectActivity.this,
                 R.layout.team_select_list, teamName, images);
         teamList.setAdapter(teamAdapter);
+
+        teamList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //TODO: Implement URLs for all positions.
+                if (position == 0) {
+                    String url = null;
+                    startNewsActivity(url);
+                }
+            }
+        });
+    }
+
+    private void startNewsActivity(String url) {
+        Intent intent = new Intent(TeamSelectActivity.this, NewsActivity.class);
+        intent.putExtra("url", url);
+        startActivity(intent);
     }
 }
