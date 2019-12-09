@@ -27,6 +27,7 @@ public class NewsActivity extends AppCompatActivity {
 
     ProgressBar newsProgressBar;
     ListView newsListView;
+    ProgressBar newsProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +57,13 @@ public class NewsActivity extends AppCompatActivity {
             super.onPostExecute(s);
             ParseNews parseNews = new ParseNews();
             parseNews.parse(s);
+            newsProgressBar.setVisibility(View.GONE);
 
             newsProgressBar.setVisibility(View.GONE);
             NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this,
                     R.layout.news_article_list, parseNews.getNewsArticles());
             newsListView.setAdapter(newsAdapter);
         }
-
         @Override
         protected String doInBackground(String... strings) {
 
