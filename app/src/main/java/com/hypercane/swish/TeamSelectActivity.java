@@ -1,8 +1,10 @@
 package com.hypercane.swish;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.ListView;
 public class TeamSelectActivity extends AppCompatActivity {
     private static final String TAG = "TeamSelectActivity";
 
+    ConstraintLayout mainLayout;
     String teamName[];
     int images[] = {R.drawable.bucks, R.drawable.bulls, R.drawable.cavaliers, R.drawable.celtics,
             R.drawable.clippers, R.drawable.grizzlies, R.drawable.hawks, R.drawable.heat,
@@ -30,7 +33,12 @@ public class TeamSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_select);
 
+        mainLayout = findViewById(R.id.teamMainLayout);
         setStatusBarColor();
+        boolean nightMode = isNightMode();
+        if (nightMode) {
+            changeViewColors();
+        }
 
         teamName = getResources().getStringArray(R.array.team_names);
         ListView teamList = findViewById(R.id.teamListView);
@@ -179,5 +187,26 @@ public class TeamSelectActivity extends AppCompatActivity {
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.parseColor("#2B2323"));
         }
+    }
+
+    private boolean isNightMode() {
+        int nightModeFlags =
+                getApplicationContext().getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                return true;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                return false;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                return true;
+        }
+        return true;
+    }
+
+    private void changeViewColors() {
+        mainLayout.setBackgroundResource(R.drawable.plain_background);
     }
 }
