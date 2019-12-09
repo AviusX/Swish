@@ -50,7 +50,7 @@ public class TeamSelectActivity extends AppCompatActivity {
                 //TODO: Implement URLs for all positions.
                 if (position == 0) {
                     String url = null;
-                    startNewsActivity(url);
+                    startNewsActivity("https://www.nba.com/bucks/rss.xml");
                 }
             }
         });

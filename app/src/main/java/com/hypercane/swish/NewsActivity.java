@@ -26,8 +26,8 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
+        ListView newsListView = findViewById(R.id.newsListView);
         String url = getIntent().getStringExtra("url");
-
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
@@ -38,7 +38,9 @@ public class NewsActivity extends AppCompatActivity {
             ParseNews parseNews = new ParseNews();
             parseNews.parse(s);
 
-            //TODO: Implement the adapter and set the adapter for the newsListView here.
+            NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this,
+                    R.layout.news_article_list, parseNews.getNewsArticles());
+            newsListView.setAdapter(newsAdapter);
         }
 
         @Override
