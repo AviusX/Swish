@@ -1,7 +1,9 @@
 package com.hypercane.swish;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -29,6 +31,9 @@ public class NewsActivity extends AppCompatActivity {
     ProgressBar newsProgressBar;
     ListView newsListView;
     TextView errorTextView;
+    TextView descriptionTV;
+    ConstraintLayout mainLayout;
+    boolean nightMode;
     String url;
 
     @Override
@@ -36,16 +41,20 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        //To change the color of the status bar to match with the custom 'Action Bar'.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#2B2323"));
-        }
-
         newsListView = findViewById(R.id.newsListView);
         newsProgressBar = findViewById(R.id.newsProgressBar);
         errorTextView = findViewById(R.id.errorTextView);
+        descriptionTV = findViewById(R.id.descriptionTextView);
+        mainLayout = findViewById(R.id.newsMainLayout);
+        nightMode = isNightMode();
+
+        setStatusBarColor();
+
+        if (nightMode) {
+            mainLayout.setBackgroundResource(R.drawable.plain_background);
+        }
+
+
         url = getIntent().getStringExtra("url");
         Log.d(TAG, "onCreate: in with URL: " + url);
 
@@ -65,11 +74,11 @@ public class NewsActivity extends AppCompatActivity {
             newsProgressBar.setVisibility(View.GONE);
             if (!url.equals("https://www.nba.com/celtics/rss.xml")) {
                 NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this,
-                        R.layout.news_article_list, parseNews.getNewsArticles());
+                        R.layout.news_article_list, parseNews.getNewsArticles(), nightMode);
                 newsListView.setAdapter(newsAdapter);
             } else {
                 CelticsNewsAdapter celticsNewsAdapter = new CelticsNewsAdapter(NewsActivity.this,
-                        R.layout.news_article_list, parseNews.getNewsArticles());
+                        R.layout.news_article_list, parseNews.getNewsArticles(), nightMode);
                 newsListView.setAdapter(celticsNewsAdapter);
             }
 
@@ -122,5 +131,31 @@ public class NewsActivity extends AppCompatActivity {
             }
             return null;
         }
+    }
+
+    private void setStatusBarColor() {
+        //To change the color of the status bar to match the 'Action Bar'
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#2B2323"));
+        }
+    }
+
+    private boolean isNightMode() {
+        int nightModeFlags =
+                getApplicationContext().getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                return true;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                return false;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                return true;
+        }
+        return true;
     }
 }

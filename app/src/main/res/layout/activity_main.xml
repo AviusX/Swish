@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="65dp"
+        android:layout_marginBottom="75dp"
         android:fontFamily="@font/lato_light"
         android:lineSpacingExtra="10sp"
         android:text="What would you like to do today? You can train or check the latest basketball news updates!"
@@ -35,7 +35,7 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/trainingButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -54,7 +54,7 @@
         android:id="@+id/welcomeTextView"
         android:layout_width="220dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/welcome_background"
         android:fontFamily="@font/lato_light"
         android:gravity="center_vertical"

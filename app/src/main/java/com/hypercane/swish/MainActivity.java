@@ -6,7 +6,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    //TODO Implement a menu to switch between light and dark modes.
 
     ConstraintLayout mainLayout;
     TextView welcomeTextView;
@@ -25,7 +28,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.Theme_AppCompat_DayNight_DarkActionBar);
         setContentView(R.layout.activity_main);
+
+        setStatusBarColor();
         boolean nightMode = isNightMode();
         mainLayout = findViewById(R.id.mainLayout);
 
@@ -75,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.WHITE);
+            window.setStatusBarColor(Color.parseColor("#212121"));
         }
     }
 

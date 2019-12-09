@@ -1,6 +1,7 @@
 package com.hypercane.swish;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,12 +18,15 @@ public class CelticsNewsAdapter extends ArrayAdapter {
     LayoutInflater layoutInflater;
     private final int layoutResource;
     private List<NewsFeed> newsArticles;
+    boolean nightMode;
 
-    public CelticsNewsAdapter(@NonNull Context context, int resource, List<NewsFeed> newsArticles) {
+    public CelticsNewsAdapter(@NonNull Context context, int resource, List<NewsFeed> newsArticles,
+                              boolean nightMode) {
         super(context, resource);
         this.layoutResource = resource;
         this.layoutInflater = LayoutInflater.from(context);
         this.newsArticles = newsArticles;
+        this.nightMode = nightMode;
     }
 
     public int getCount() {
@@ -44,6 +48,11 @@ public class CelticsNewsAdapter extends ArrayAdapter {
         }
 
         NewsFeed currentArticle = newsArticles.get(position);
+
+        if (!nightMode) {
+            viewHolder.descriptionTextView.setTextColor(Color.BLACK);
+            viewHolder.authorTextView.setTextColor(Color.BLACK);
+        }
 
         viewHolder.headlineTextView.setText(currentArticle.getTitle());
         viewHolder.descriptionTextView.setText("No description available.");
