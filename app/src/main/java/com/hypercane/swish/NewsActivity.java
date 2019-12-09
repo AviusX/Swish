@@ -7,9 +7,11 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +26,7 @@ public class NewsActivity extends AppCompatActivity {
     private static final String TAG = "NewsActivity";
 
     ListView newsListView;
+    ProgressBar newsProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class NewsActivity extends AppCompatActivity {
         }
 
         newsListView = findViewById(R.id.newsListView);
+        newsProgressBar = findViewById(R.id.newsProgressBar);
         String url = getIntent().getStringExtra("url");
         Log.d(TAG, "onCreate: in with url:" + url);
 
@@ -52,12 +56,12 @@ public class NewsActivity extends AppCompatActivity {
             super.onPostExecute(s);
             ParseNews parseNews = new ParseNews();
             parseNews.parse(s);
+            newsProgressBar.setVisibility(View.GONE);
 
             NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this,
                     R.layout.news_article_list, parseNews.getNewsArticles());
             newsListView.setAdapter(newsAdapter);
         }
-
         @Override
         protected String doInBackground(String... strings) {
 
