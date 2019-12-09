@@ -1,22 +1,43 @@
 package com.hypercane.swish;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    ConstraintLayout mainLayout;
+    TextView welcomeTextView;
+    TextView descriptionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        boolean nightMode = isNightMode();
+        mainLayout = findViewById(R.id.mainLayout);
 
         ImageButton trainingButton = findViewById(R.id.trainingButton);
         ImageButton newsButton = findViewById(R.id.newsButton);
+        welcomeTextView = findViewById(R.id.welcomeTextView);
+        descriptionTextView = findViewById(R.id.descriptionTextView);
+
+        //Changing backgrounds for various views if app is in light mode.
+        if (!nightMode) {
+            changeViewColors();
+        }
 
         trainingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +53,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isNightMode() {
+        int nightModeFlags =
+                getApplicationContext().getResources().getConfiguration().uiMode &
+                        Configuration.UI_MODE_NIGHT_MASK;
+        switch (nightModeFlags) {
+            case Configuration.UI_MODE_NIGHT_YES:
+                return true;
+
+            case Configuration.UI_MODE_NIGHT_NO:
+                return false;
+
+            case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                return true;
+        }
+        return true;
+    }
+
+    private void setStatusBarColor() {
+        //To change the color of the status bar to match the 'Action Bar'
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.WHITE);
+        }
+    }
+
     private void startTrainingActivity() {
         Intent intent = new Intent(MainActivity.this, TrainingActivity.class);
         startActivity(intent);
@@ -40,5 +87,13 @@ public class MainActivity extends AppCompatActivity {
     private void startNewsActivity() {
         Intent intent = new Intent(MainActivity.this, TeamSelectActivity.class);
         startActivity(intent);
+    }
+
+    private void changeViewColors() {
+        setStatusBarColor();
+        mainLayout.setBackgroundResource(R.drawable.home_background_light);
+        welcomeTextView.setBackgroundResource(0);
+        welcomeTextView.setTextColor(Color.BLACK);
+        descriptionTextView.setTextColor(Color.BLACK);
     }
 }

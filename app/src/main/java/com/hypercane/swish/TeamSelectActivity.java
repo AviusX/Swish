@@ -30,12 +30,7 @@ public class TeamSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_select);
 
-        //To change the color of the status bar to match the 'Action Bar'
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor("#2B2323"));
-        }
+        setStatusBarColor();
 
         teamName = getResources().getStringArray(R.array.team_names);
         ListView teamList = findViewById(R.id.teamListView);
@@ -47,7 +42,6 @@ public class TeamSelectActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //TODO: Implement URLs for all positions.
                 if (position == 0) {
                     String url = "https://www.nba.com/bucks/rss.xml";
                     startNewsActivity(url);
@@ -176,5 +170,14 @@ public class TeamSelectActivity extends AppCompatActivity {
         Intent intent = new Intent(TeamSelectActivity.this, NewsActivity.class);
         intent.putExtra("url", url);
         startActivity(intent);
+    }
+
+    private void setStatusBarColor() {
+        //To change the color of the status bar to match the 'Action Bar'
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#2B2323"));
+        }
     }
 }

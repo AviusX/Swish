@@ -18,7 +18,7 @@ public class TeamAdapter extends ArrayAdapter {
     private String[] teamName;
     private int[] teamLogos;
 
-    public TeamAdapter(@NonNull Context context, int resource, String[] teamName, int[] teamLogos) {
+    TeamAdapter(@NonNull Context context, int resource, String[] teamName, int[] teamLogos) {
         super(context, resource, teamName);
         this.layoutResource = resource;
         this.layoutInflater = LayoutInflater.from(context);
