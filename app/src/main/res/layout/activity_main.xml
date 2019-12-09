@@ -24,18 +24,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="65dp"
         android:fontFamily="@font/lato_light"
         android:lineSpacingExtra="10sp"
         android:text="What would you like to do today? You can train or check the latest basketball news updates!"
         android:textAlignment="center"
         android:textColor="@android:color/darker_gray"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/trainingButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/trainingButton"
@@ -47,15 +47,13 @@
         app:layout_constraintBottom_toTopOf="@+id/newsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
-        app:layout_constraintVertical_bias="0.943"
         app:srcCompat="@drawable/training_button" />
 
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="220dp"
         android:layout_height="45dp"
-        android:layout_marginTop="268dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/welcome_background"
         android:fontFamily="@font/lato_light"
         android:gravity="center_vertical"
@@ -65,9 +63,9 @@
         android:textAllCaps="true"
         android:textColor="@android:color/darker_gray"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
