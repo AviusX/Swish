@@ -2,9 +2,13 @@ package com.hypercane.swish;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ListView;
 
 import java.io.BufferedReader;
@@ -26,8 +30,19 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        ListView newsListView = findViewById(R.id.newsListView);
+        //To change the color of the status bar to match with the custom 'Action Bar'.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.parseColor("#2B2323"));
+        }
+
+        newsListView = findViewById(R.id.newsListView);
         String url = getIntent().getStringExtra("url");
+        Log.d(TAG, "onCreate: in with url:" + url);
+
+        DownloadData downloadData = new DownloadData();
+        downloadData.execute(url);
     }
 
     private class DownloadData extends AsyncTask<String, Void, String> {
@@ -47,7 +62,10 @@ public class NewsActivity extends AppCompatActivity {
         protected String doInBackground(String... strings) {
 
             String rssFeed = downloadXML(strings[0]);
-            return null;
+            if (rssFeed == null) {
+                Log.e(TAG, "doInBackground: Error downloading.");
+            }
+            return rssFeed;
         }
 
         private String downloadXML(String url) {

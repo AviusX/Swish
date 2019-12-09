@@ -57,9 +57,9 @@ public class ParseNews {
                             } else if ("title".equalsIgnoreCase(tagName)) {
                                 currentArticle.setTitle(textValue);
                             } else if ("description".equalsIgnoreCase(tagName)) {
-                                currentArticle.setDescription(textValue);
+                                currentArticle.setDescription(textValue + "...");
                             } else if ("author".equalsIgnoreCase(tagName)) {
-                                currentArticle.setDescription((textValue));
+                                currentArticle.setAuthor((textValue));
                             }
                         }
                         break;
