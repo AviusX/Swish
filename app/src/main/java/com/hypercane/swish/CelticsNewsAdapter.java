@@ -46,8 +46,9 @@ public class CelticsNewsAdapter extends ArrayAdapter {
         NewsFeed currentArticle = newsArticles.get(position);
 
         viewHolder.headlineTextView.setText(currentArticle.getTitle());
-        viewHolder.descriptionTextView.setText("No description available.");
+        viewHolder.descriptionTextView.setText("Click for more information.");
         viewHolder.authorTextView.setText(currentArticle.getAuthor());
+        viewHolder.linkTextView.setText((currentArticle.getLink()));
 
         return convertView;
     }
@@ -56,11 +57,13 @@ public class CelticsNewsAdapter extends ArrayAdapter {
         TextView headlineTextView;
         TextView descriptionTextView;
         TextView authorTextView;
+        TextView linkTextView;
 
         ViewHolder(View v) {
             this.headlineTextView = v.findViewById(R.id.headlineTextView);
             this.descriptionTextView = v.findViewById(R.id.descriptionTextView);
             this.authorTextView = v.findViewById(R.id.authorTextView);
+            this.linkTextView = v.findViewById(R.id.linkTextView);
         }
     }
 }

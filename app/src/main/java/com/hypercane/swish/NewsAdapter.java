@@ -48,6 +48,8 @@ public class NewsAdapter extends ArrayAdapter {
         viewHolder.headlineTextView.setText(currentArticle.getTitle());
         viewHolder.descriptionTextView.setText((currentArticle.getDescription()));
         viewHolder.authorTextView.setText(currentArticle.getAuthor());
+        viewHolder.linkTextView.setText(currentArticle.getLink());
+
 
         return convertView;
     }
@@ -56,11 +58,13 @@ public class NewsAdapter extends ArrayAdapter {
         TextView headlineTextView;
         TextView descriptionTextView;
         TextView authorTextView;
+        TextView linkTextView;
 
         ViewHolder(View v) {
             this.headlineTextView = v.findViewById(R.id.headlineTextView);
             this.descriptionTextView = v.findViewById(R.id.descriptionTextView);
             this.authorTextView = v.findViewById(R.id.authorTextView);
+            this.linkTextView = v.findViewById(R.id.linkTextView);
         }
     }
 }

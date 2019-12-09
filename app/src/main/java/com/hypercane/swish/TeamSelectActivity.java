@@ -47,127 +47,7 @@ public class TeamSelectActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                //TODO: Implement URLs for all positions.
-                if (position == 0) {
-                    String url = "https://www.nba.com/bucks/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 1) {
-                    String url = "https://www.nba.com/bulls/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 2) {
-                    String url = "https://www.nba.com/cavaliers/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 3) {
-                    String url = "https://www.nba.com/celtics/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 4) {
-                    String url = "https://www.nba.com/clippers/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 5) {
-                    String url = "https://www.nba.com/grizzlies/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 6) {
-                    String url = "https://www.nba.com/hawks/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 7) {
-                    String url = "https://www.nba.com/heat/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 8) {
-                    String url = "https://www.nba.com/hornets/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 9) {
-                    String url = "https://www.nba.com/jazz/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 10) {
-                    String url = "https://www.nba.com/kings/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 11) {
-                    String url = "https://www.nba.com/knicks/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 12) {
-                    String url = "https://www.nba.com/lakers/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 13) {
-                    String url = "https://www.nba.com/magic/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 14) {
-                    String url = "https://www.nba.com/mavericks/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 15) {
-                    String url = "https://www.nba.com/nets/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 16) {
-                    String url = "https://www.nba.com/nuggets/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 17) {
-                    String url = "https://www.nba.com/pacers/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 18) {
-                    String url = "https://www.nba.com/pelicans/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 19) {
-                    String url = "https://www.nba.com/pistons/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 20) {
-                    String url = "https://www.nba.com/raptors/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 21) {
-                    String url = "https://www.nba.com/rockets/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 22) {
-                    String url = "https://www.nba.com/sixers/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 23) {
-                    String url = "https://www.nba.com/spurs/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 24) {
-                    String url = "https://www.nba.com/suns/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 25) {
-                    String url = "https://www.nba.com/thunder/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 26) {
-                    String url = "https://www.nba.com/blazers/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 27) {
-                    String url = "https://www.nba.com/timberwolves/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 28) {
-                    String url = "https://www.nba.com/warriors/rss.xml";
-                    startNewsActivity(url);
-                }
-                if (position == 29) {
-                    String url = "https://www.nba.com/wizards/rss.xml";
-                    startNewsActivity(url);
-                }
+                startTeamActivity(position);
             }
         });
     }
@@ -176,5 +56,128 @@ public class TeamSelectActivity extends AppCompatActivity {
         Intent intent = new Intent(TeamSelectActivity.this, NewsActivity.class);
         intent.putExtra("url", url);
         startActivity(intent);
+    }
+
+    private void startTeamActivity(int position) {
+        if (position == 0) {
+            String url = "https://www.nba.com/bucks/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 1) {
+            String url = "https://www.nba.com/bulls/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 2) {
+            String url = "https://www.nba.com/cavaliers/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 3) {
+            String url = "https://www.nba.com/celtics/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 4) {
+            String url = "https://www.nba.com/clippers/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 5) {
+            String url = "https://www.nba.com/grizzlies/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 6) {
+            String url = "https://www.nba.com/hawks/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 7) {
+            String url = "https://www.nba.com/heat/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 8) {
+            String url = "https://www.nba.com/hornets/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 9) {
+            String url = "https://www.nba.com/jazz/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 10) {
+            String url = "https://www.nba.com/kings/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 11) {
+            String url = "https://www.nba.com/knicks/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 12) {
+            String url = "https://www.nba.com/lakers/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 13) {
+            String url = "https://www.nba.com/magic/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 14) {
+            String url = "https://www.nba.com/mavericks/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 15) {
+            String url = "https://www.nba.com/nets/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 16) {
+            String url = "https://www.nba.com/nuggets/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 17) {
+            String url = "https://www.nba.com/pacers/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 18) {
+            String url = "https://www.nba.com/pelicans/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 19) {
+            String url = "https://www.nba.com/pistons/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 20) {
+            String url = "https://www.nba.com/raptors/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 21) {
+            String url = "https://www.nba.com/rockets/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 22) {
+            String url = "https://www.nba.com/sixers/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 23) {
+            String url = "https://www.nba.com/spurs/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 24) {
+            String url = "https://www.nba.com/suns/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 25) {
+            String url = "https://www.nba.com/thunder/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 26) {
+            String url = "https://www.nba.com/blazers/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 27) {
+            String url = "https://www.nba.com/timberwolves/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 28) {
+            String url = "https://www.nba.com/warriors/rss.xml";
+            startNewsActivity(url);
+        }
+        if (position == 29) {
+            String url = "https://www.nba.com/wizards/rss.xml";
+            startNewsActivity(url);
+        }
     }
 }

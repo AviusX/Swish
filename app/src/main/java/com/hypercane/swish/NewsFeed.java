@@ -7,6 +7,7 @@ public class NewsFeed {
     private String title;
     private String description;
     private String author;
+    private String link;
 
     public String getTitle() {
         return title;
@@ -30,5 +31,13 @@ public class NewsFeed {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

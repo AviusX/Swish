@@ -2,7 +2,9 @@ package com.hypercane.swish;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -72,6 +75,15 @@ public class NewsActivity extends AppCompatActivity {
                         R.layout.news_article_list, parseNews.getNewsArticles());
                 newsListView.setAdapter(celticsNewsAdapter);
             }
+            newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String link =((TextView)view.findViewById(R.id.linkTextView)).getText().toString();
+                    Uri webpage = Uri.parse(link);
+                    Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                    startActivity(webIntent);
+                }
+            });
 
             if (url.equals("https://www.nba.com/mavericks/rss.xml")) {
                 errorTextView.setText("We're sorry, but The Mavericks don't currently have an active" +
