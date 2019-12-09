@@ -8,18 +8,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 public class TrainingActivity extends AppCompatActivity {
 
     boolean nightMode;
+    ImageView trainingLogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_training);
+        trainingLogo = findViewById(R.id.trainingLogo);
         nightMode = isNightMode();
         if (!nightMode) {
             setStatusBarColor();
+            trainingLogo.setImageResource(R.drawable.training_logo_light);
         }
     }
 
