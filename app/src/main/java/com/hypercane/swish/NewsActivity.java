@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +28,8 @@ public class NewsActivity extends AppCompatActivity {
 
     ProgressBar newsProgressBar;
     ListView newsListView;
-    ProgressBar newsProgressBar;
+    TextView errorTextView;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +45,9 @@ public class NewsActivity extends AppCompatActivity {
 
         newsListView = findViewById(R.id.newsListView);
         newsProgressBar = findViewById(R.id.newsProgressBar);
-        String url = getIntent().getStringExtra("url");
-        Log.d(TAG, "onCreate: in with url:" + url);
+        errorTextView = findViewById(R.id.errorTextView);
+        url = getIntent().getStringExtra("url");
+        Log.d(TAG, "onCreate: in with URL: " + url);
 
         DownloadData downloadData = new DownloadData();
         downloadData.execute(url);
@@ -60,9 +63,20 @@ public class NewsActivity extends AppCompatActivity {
             newsProgressBar.setVisibility(View.GONE);
 
             newsProgressBar.setVisibility(View.GONE);
-            NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this,
-                    R.layout.news_article_list, parseNews.getNewsArticles());
-            newsListView.setAdapter(newsAdapter);
+            if (!url.equals("https://www.nba.com/celtics/rss.xml")) {
+                NewsAdapter newsAdapter = new NewsAdapter(NewsActivity.this,
+                        R.layout.news_article_list, parseNews.getNewsArticles());
+                newsListView.setAdapter(newsAdapter);
+            } else {
+                CelticsNewsAdapter celticsNewsAdapter = new CelticsNewsAdapter(NewsActivity.this,
+                        R.layout.news_article_list, parseNews.getNewsArticles());
+                newsListView.setAdapter(celticsNewsAdapter);
+            }
+
+            if (url.equals("https://www.nba.com/mavericks/rss.xml")) {
+                errorTextView.setText("We're sorry, but The Mavericks don't currently have an active" +
+                        " RSS feed to fetch news from!");
+            }
         }
         @Override
         protected String doInBackground(String... strings) {
