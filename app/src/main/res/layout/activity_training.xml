@@ -7,4 +7,40 @@
     android:background="@drawable/plain_background"
     tools:context=".TrainingActivity">
 
+    <ImageButton
+        android:id="@+id/trainingRoutineBtn"
+        android:layout_width="280dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="76dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/training_routine_btn" />
+
+    <ImageButton
+        android:id="@+id/addNotesBtn"
+        android:layout_width="280dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="4dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/trainingRoutineBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/add_notes_btn" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/addNotesBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/training_logo_dark" />
 </androidx.constraintlayout.widget.ConstraintLayout>

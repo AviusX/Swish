@@ -33,14 +33,14 @@ public class CelticsNewsAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        CelticsNewsAdapter.ViewHolder viewHolder;
+        ViewHolder viewHolder;
 
         if (convertView == null) {
             convertView = layoutInflater.inflate(layoutResource, parent, false);
             viewHolder = new CelticsNewsAdapter.ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
-            viewHolder = (CelticsNewsAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         NewsFeed currentArticle = newsArticles.get(position);
