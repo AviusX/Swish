@@ -15,9 +15,15 @@ public class TrainingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_training);
 
         ImageButton routineButton = findViewById(R.id.trainingRoutineBtn);
-//        ImageButton notesButton = findViewById(R.id.addNotesBtn);
+        ImageButton notesButton = findViewById(R.id.addNotesBtn);
 
         routineButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityTraining();
+            }
+        });
+        notesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivityTraining();
